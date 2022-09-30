@@ -1,11 +1,8 @@
-import gui.FoodHotelApp;
-import plants.*;
-
+import gui.FoodHotelAppen;
 
 public class Main {
     public static void main(String[] args) {
-        // Finns ett Klass med Statiska metoder som hanterar programmet
-        FoodHotelApp.runHotelApp();
-
+        // OOP för att komma ut ur en statisk kontext, behöver ej namnge objektet pga kommer ej ref den igen!
+        new FoodHotelAppen();
     }
 }

@@ -6,11 +6,18 @@ public abstract class Plant implements PlantFoodCalculator {
     protected String name;
     protected double heightInMeter;
 
+    // Enum typ av food plantan skall ha
+    protected Food food;
+
     // Constructor
     public Plant(String name, double heightInMeter) {
         this.name = name;
         this.heightInMeter = heightInMeter;
     }
+
+    // Polymorfism
+    // Abstrakt metod som returnerar växternas Mattyp, olika beroende på planta!
+    public abstract String getFoodTypen();
 
 
     // Getters n Setters
@@ -29,5 +36,7 @@ public abstract class Plant implements PlantFoodCalculator {
     public void setHeightInMeter(double heightInMeter) {
         this.heightInMeter = heightInMeter;
     }
+
+
 
 }
