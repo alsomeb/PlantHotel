@@ -5,7 +5,6 @@ public abstract class Plant implements PlantFoodCalculator {
     // Inkapslad data med protected pga enklare TDD, medans metoder är publika för användning
     protected String name;
     protected double heightInMeter;
-
     // Enum typ av food plantan skall ha
     protected Food food;
 
