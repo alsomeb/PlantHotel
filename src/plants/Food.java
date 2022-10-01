@@ -11,8 +11,8 @@ public enum Food {
     private final double baseAmount;
     private final double multiplyAmount;
 
-    Food(String typ, double baseAmount, double multiplyAmount) {
-        this.foodName = typ;
+    Food(String foodName, double baseAmount, double multiplyAmount) {
+        this.foodName = foodName;
         this.baseAmount = baseAmount;
         this.multiplyAmount = multiplyAmount;
     }
