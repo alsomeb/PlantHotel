@@ -68,8 +68,9 @@ public class FoodHotelAppen {
                 String input = userInputDialog();
                 try {
                     Plant currentPlant = getPlantByNameElseThrow(input, listOfPlants);
+                    // Dynamiskt skriver ut mängd och mat typ, inte hårdkodat!
                     message("This plant needs " + currentPlant.calcNutrition() + " litres of " + currentPlant.getFoodTypen());
-                    break; // Bryter ut i loopen och går vidare i programmet
+                    break;
                 } catch (NoSuchElementException e) {
                     message("We dont have a plant named " + input);
                 }

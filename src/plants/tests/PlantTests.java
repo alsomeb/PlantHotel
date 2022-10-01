@@ -13,7 +13,7 @@ public class PlantTests {
     @Test
     void testCactusCalcNutritionReturnsCorrectValue() {
         // Polymorfism Interface
-        // Vi kommer åt alla metoder som finns i vårat interface som Cactus implementerar, behöver ingen annan onödig data!
+        // Vi kommer åt alla metoder som finns i vårat interface som Cactus implementerar, behöver ingen annan onödig data, spara på minnet!
         PlantFoodCalculator cactusCalculator = new Cactus("Igge",0.2);
         double expected = 0.02;
         assertEquals(expected, cactusCalculator.calcNutrition());

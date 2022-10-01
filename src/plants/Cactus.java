@@ -12,10 +12,10 @@ public class Cactus extends Plant {
 
     // Polymorfism interface
     // Olika matematiska formler beroende på planta
-
     @Override
     public double calcNutrition() {
-        return food.getBaseAmount(); // Behöver inte gångras med längd eller något annat här !
+        // Behöver inte gångras med längd eller något annat här !
+        return food.getBaseAmount();
     }
 
     // Polymorfism
