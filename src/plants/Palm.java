@@ -5,13 +5,13 @@ public class Palm extends Plant {
     public Palm(String name, double heightInMeter) {
         super(name, heightInMeter);
         // Vi vet vad en Palm skall ha för mat så vi ger objekten direkt typen av mat med ENUMEN
+        // Annars finns risk när vi instansierar att de blir fel Mat Typ
         food = Food.TAPWATER;
     }
 
 
     // Polymorfism interface
     // Olika matematiska formler beroende på planta
-    // Typen av Mat Olika för plantor
     @Override
     public double calcNutrition() {
         // använder food ENUMEN för mattematiska beräkningen av mat

@@ -5,13 +5,13 @@ public class FlyTrap extends Plant {
     public FlyTrap(String name, double heightInMeter) {
         super(name, heightInMeter);
         // Vi vet vad en FlyTrap skall ha för mat så vi ger objekten direkt typen av mat med ENUMEN
+        // Annars finns risk när vi instansierar att de blir fel Mat Typ
         food = Food.PROTEINDRINK;
     }
 
 
     // Polymorfism interface
     // Olika matematiska formler beroende på planta
-    // Typen av Mat Olika för plantor
     @Override
     public double calcNutrition() {
         // använder food ENUMEN för mattematiska beräkningen av mat
