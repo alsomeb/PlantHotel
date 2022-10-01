@@ -39,16 +39,17 @@ public class FoodHotelAppen {
 
 
     private String userInputDialog() {
-        String input = JOptionPane.showInputDialog("What plant do you want to calculate food for?");
+        while (true) {
+            String input = JOptionPane.showInputDialog("What plant do you want to calculate food for?");
 
-        if (input.isEmpty()) {
-            message("Cant be empty, enter plant name!");
-            userInputDialog(); // Kör om input rutan
-        } else {
+            if (input == null) {
+                System.exit(0); // Klickar man cancel så blir de null och i DETTA fall avser vi att personen vill avsluta programmet
+            } else if (input.isEmpty()) {
+                message("Cant be empty, enter plant name!");
+                continue;
+            }
             return input;
         }
-
-        throw new NullPointerException(); // Kastar nullPointer exception om man klickar cancel på rutan
     }
 
 
@@ -64,9 +65,7 @@ public class FoodHotelAppen {
     // Byggt Felhantering då OM man klickar cancel på Rutan så får man NullPointerException, så hanterar det felet med nestade Try catch --> DVS Cancel == Avsluta program
     private void handleInput(List<Plant> listOfPlants) {
         while(true) {
-            try {
                 String input = userInputDialog();
-
                 try {
                     Plant currentPlant = getPlantByNameElseThrow(input, listOfPlants);
                     message("This plant needs " + currentPlant.calcNutrition() + " litres of " + currentPlant.getFoodTypen());
@@ -74,11 +73,7 @@ public class FoodHotelAppen {
                 } catch (NoSuchElementException e) {
                     message("We dont have a plant named " + input);
                 }
-
-            } catch (NullPointerException e) {
-                System.exit(0); // Klickar man cancel så avsluta programmet
             }
-        }
     }
 
     // Öppnar upp en ström på plantListan
