@@ -13,7 +13,7 @@ import java.util.NoSuchElementException;
 public class FoodHotelAppen {
 
     // Inkapslad Data, en lista med plantor som vi sedan jobbar med
-    // Listan kan va final pga den KAN muteras men ej peka på en ny lista (objekt)
+    // Listan kan va final pga den KAN muteras men ej peka på en ny lista (objekt) efter den initierats
     private final List<Plant> plants; // Skapar pekare
 
     // Konstruktor
@@ -27,7 +27,7 @@ public class FoodHotelAppen {
         message("Welcome to the Plant Hotel App");
 
         // Input Validerare, tar in listan för att söka mot den
-        handleInput(plants);
+        handleInput();
     }
 
     // Skapar upp en lista med Plants som vi kan jobba med för sökningar av användaren.
@@ -63,27 +63,26 @@ public class FoodHotelAppen {
     // Hanterar input av användaren
     // Använder våran userInputDialog() där svaret läggs in i getPlantByNameElseThrow(), hittar den matchning --> Skriv ut svaret för användaren.
     // Lägger try Catch runt om då den returnerar ett NoSuchElementException som vi sedan hanterar med ett "felmeddelande" med våran message() om inte plantan fanns som vi sökte på.
-    // Byggt Felhantering då OM man klickar cancel på Rutan så får man NullPointerException, så hanterar det felet med nestade Try catch --> DVS Cancel == Avsluta program
-    private void handleInput(List<Plant> listOfPlants) {
+    private void handleInput() {
         while(true) {
-                String input = userInputDialog();
+                String plantName = userInputDialog();
                 try {
-                    Plant currentPlant = getPlantByNameElseThrow(input, listOfPlants);
+                    Plant currentPlant = getPlantByNameElseThrow(plantName);
                     // Dynamiskt skriver ut mängd och mat typ, inte hårdkodat!
                     message("This plant needs " + currentPlant.calcNutrition() + " litres of " + currentPlant.getFoodTypen());
                     break;
                 } catch (NoSuchElementException e) {
-                    message("We dont have a plant named " + input);
+                    message("We dont have a plant named " + plantName);
                 }
             }
     }
 
     // Öppnar upp en ström på plantListan
-    // Använder den String som man skickade in som input och löper genom listan för att hitta match
+    // Använder den String som man skickade in som input och löper genom plants listan för att hitta match
     // Vid första match -> returnerar plantans objekt så vi kan jobba med objektet senare
-    private static Plant getPlantByNameElseThrow(String searchQuery, List<Plant> listOfCurrentPlants) {
-        return listOfCurrentPlants.stream()
-                .filter(plant -> plant.getName().equalsIgnoreCase(searchQuery))
+    private Plant getPlantByNameElseThrow(String plantName) {
+        return plants.stream()
+                .filter(plant -> plant.getName().equalsIgnoreCase(plantName))
                 .findFirst()
                 .orElseThrow(() -> new NoSuchElementException());
     }
