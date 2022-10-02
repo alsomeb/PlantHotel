@@ -14,10 +14,11 @@ public class FoodHotelAppen {
 
     // Inkapslad Data, en lista med plantor som vi sedan jobbar med
     // Listan kan va final pga den KAN muteras men ej peka på en ny lista (objekt)
-    private final List<Plant> plants = new ArrayList<>();
+    private final List<Plant> plants; // Skapar pekare
 
     // Konstruktor
     public FoodHotelAppen() {
+        plants = new ArrayList<>(); // pekar nu i minnet där data för ett arrayList objekt förvaras
 
         // Lägger in plantorna vi skall jobba med i arrayListan
         addPlants();
@@ -25,7 +26,7 @@ public class FoodHotelAppen {
         // Välkomst ruta, Dynamisk återanvänds hela tiden
         message("Welcome to the Plant Hotel App");
 
-        // InputValiderare, tar in listan för att söka mot den
+        // Input Validerare, tar in listan för att söka mot den
         handleInput(plants);
     }
 
