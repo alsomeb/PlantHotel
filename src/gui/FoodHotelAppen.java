@@ -16,6 +16,11 @@ public class FoodHotelAppen {
     // Listan kan va final pga den KAN muteras men ej peka på en ny lista (objekt) efter den initierats
     private final List<Plant> plants; // Skapar pekare
 
+    // Icons in the GUI that never Change
+    private final ImageIcon plantIcon = new ImageIcon("img/plant.png");
+    private final ImageIcon errorIcon = new ImageIcon("img/jackieError.png");
+
+
     // Konstruktor
     public FoodHotelAppen() {
         plants = new ArrayList<>(); // pekar nu i minnet där data för ett arrayList objekt förvaras
@@ -23,11 +28,8 @@ public class FoodHotelAppen {
         // Lägger in plantorna vi skall jobba med i arrayListan
         addPlants();
 
-        // Välkomst ruta, Dynamisk återanvänds hela tiden
-        message("Welcome to the Plant Hotel App");
-
-        // Input Validerare, tar in listan för att söka mot den
-        handleInput();
+        // Ingång i programmet
+        menuHandler();
     }
 
     // Skapar upp en lista med Plants som vi kan jobba med för sökningar av användaren.
@@ -38,13 +40,59 @@ public class FoodHotelAppen {
         plants.add(new Palm("Putte", 1.0));
     }
 
+    // Ritar ut Menu Prompt, "Välkomst menyn"
+    private int menuPrompt() {
+        Object[] options = { "Show all plants in the system", "Search", "Exit"};
+        return JOptionPane.showOptionDialog(null, "Welcome to Alex Plant Hotel Menu", "Alex Plant Hotel App", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, plantIcon, options, null);
+    }
+
+
+    private void errorPrompt(String plantName) {
+        Object[] options = { "Okay im sorry!"};
+        String message = "We dont have a plant named " + plantName;
+        Object defaultValueWhenPressedEnter = options[0]; // Så vi kan klicka enter istället för att klicka på knappen, den tar in en Object[]
+        JOptionPane.showOptionDialog(null, message, "Plant not found", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, errorIcon, options, defaultValueWhenPressedEnter);
+    }
+
+    // Visar resultat för användaren med olika bilder på katter varje gång :)
+    private void showResult(Plant plant) {
+        // Genererar en random icon
+        ImageIcon foodIcon = new ImageIcon(RandomImage.getRandomImg());
+
+        Object[] options = { "mmm.. Tasty!"};
+        String message = "This plant needs " + plant.calcNutrition() + " litres of " + plant.getFoodTypen();
+        Object defaultValueWhenPressedEnter = options[0];
+        JOptionPane.showOptionDialog(null, message, "Plant Food", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, foodIcon, options, defaultValueWhenPressedEnter);
+    }
+
+
+    // Switch sats som skickar oss vidare till de metoder vi gjorde i menuPrompt()
+    private void menuHandler() {
+        while (true) {
+            int choice = menuPrompt();
+            switch (choice) {
+                case 0 -> message(getAllPlantNames());
+                case 1 -> handleInput();
+                case 2, -1 -> System.exit(1337);
+            }
+        }
+    }
+
+    private String getAllPlantNames() {
+        StringBuilder sb = new StringBuilder();
+        for(Plant plant : plants) {
+            sb.append(plant.getName()).append("\nHeight: ").append(plant.getHeightInMeter()).append(" meters").append("\n\n");
+        }
+        return sb.toString();
+    }
+
 
     private String userInputDialog() {
         while (true) {
             String input = JOptionPane.showInputDialog("What plant do you want to calculate food for?");
 
             if (input == null) {
-                System.exit(0); // Klickar man cancel så blir de null och i DETTA fall avser vi att personen vill avsluta programmet
+                menuHandler(); // Klickar man cancel så blir de null och i DETTA fall avser vi att personen vill gå tillbaka till huvudmenyn
             } else if (input.isEmpty()) {
                 message("Cant be empty, enter plant name!");
                 continue;
@@ -69,10 +117,11 @@ public class FoodHotelAppen {
                 try {
                     Plant currentPlant = getPlantByNameElseThrow(plantName);
                     // Dynamiskt skriver ut mängd och mat typ, inte hårdkodat!
-                    message("This plant needs " + currentPlant.calcNutrition() + " litres of " + currentPlant.getFoodTypen());
+                    //message("This plant needs " + currentPlant.calcNutrition() + " litres of " + currentPlant.getFoodTypen());
+                    showResult(currentPlant);
                     break;
                 } catch (NoSuchElementException e) {
-                    message("We dont have a plant named " + plantName);
+                    errorPrompt(plantName);
                 }
             }
     }
