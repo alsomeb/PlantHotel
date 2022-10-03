@@ -24,7 +24,7 @@ public abstract class Plant implements PlantFoodCalculator {
     public abstract String getFoodTypen();
 
 
-    // Getters n Setters
+    // Getters
     public String getName() {
         return name;
     }
