@@ -18,7 +18,6 @@ public class FoodHotelAppen {
 
     // Icons in the GUI that never Change
     private final ImageIcon plantIcon = new ImageIcon("img/plant.png");
-    private final ImageIcon errorIcon = new ImageIcon("img/jackieError.png");
 
 
     // Konstruktor
@@ -47,7 +46,10 @@ public class FoodHotelAppen {
     }
 
 
+    // Ger random bild varje gång för skojs skull :)
     private void errorPrompt(String plantName) {
+        ImageIcon errorIcon = new ImageIcon(RandomImage.getRandomErrImg());
+
         Object[] options = { "Okay im sorry!"};
         String message = "We dont have a plant named " + plantName;
         Object defaultValueWhenPressedEnter = options[0]; // Så vi kan klicka enter istället för att klicka på knappen, den tar in en Object[]
@@ -57,7 +59,7 @@ public class FoodHotelAppen {
     // Visar resultat för användaren med olika bilder på katter varje gång :)
     private void showResult(Plant plant) {
         // Genererar en random icon
-        ImageIcon foodIcon = new ImageIcon(RandomImage.getRandomImg());
+        ImageIcon foodIcon = new ImageIcon(RandomImage.getRandomCatImg());
 
         Object[] options = { "mmm.. Tasty!"};
         String message = "This plant needs " + plant.calcNutrition() + " litres of " + plant.getFoodTypen();
