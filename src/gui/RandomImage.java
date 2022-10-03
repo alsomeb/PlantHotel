@@ -6,19 +6,19 @@ import java.util.Random;
 public class RandomImage {
 
     public static String getRandomCatImg() {
-        String[] cats = getAllFileNamesAsArrayInFolder("cats");
+        String[] cats = getAllFileNamesAsArrayInFolder(FileDirectoryEnum.CATS);
 
         // Random nr dynamiskt från listan
         int randomNr = getRandomNumber(cats.length);
 
         // Returnerar en random index
-        return "img/randomimg/cats/" + cats[randomNr];
+        return FileDirectoryEnum.CATS.url + cats[randomNr];
     }
 
     public static String getRandomErrImg() {
-        String[] errs = getAllFileNamesAsArrayInFolder("errors");
+        String[] errs = getAllFileNamesAsArrayInFolder(FileDirectoryEnum.ERRORS);
         int randomNr = getRandomNumber(errs.length);
-        return "img/randomimg/errors/" + errs[randomNr];
+        return FileDirectoryEnum.ERRORS.url + errs[randomNr];
     }
 
     private static int getRandomNumber(int max) {
@@ -26,9 +26,9 @@ public class RandomImage {
         return rand.nextInt(max);
     }
 
-    private static String[] getAllFileNamesAsArrayInFolder(String folder) {
+    private static String[] getAllFileNamesAsArrayInFolder(FileDirectoryEnum directoryEnum) {
         String[] pathNames;
-        File randomDirectory = new File("img/randomimg/" + folder + "/");
+        File randomDirectory = new File(directoryEnum.url);
 
         // Populates the Array with the url to the images
         return pathNames = randomDirectory.list();
