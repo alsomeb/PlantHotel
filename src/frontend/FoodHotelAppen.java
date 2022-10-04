@@ -90,6 +90,13 @@ public class FoodHotelAppen {
     }
 
 
+    // Dynamisk message metod som kan återanvändas
+    private void message(String text) {
+        JOptionPane.showMessageDialog(null, text);
+    }
+
+
+    // Denna används i HandleInput
     private String userInputDialog() {
         while (true) {
             String input = JOptionPane.showInputDialog("What plant do you want to calculate food for?");
@@ -103,13 +110,6 @@ public class FoodHotelAppen {
             return input;
         }
     }
-
-
-    // Dynamisk message metod som återanvänds hela tiden för olika meddelanden i programmet
-    private void message(String text) {
-        JOptionPane.showMessageDialog(null, text);
-    }
-
 
     // Hanterar input av användaren
     // Använder våran userInputDialog() där svaret läggs in i getPlantByNameElseThrow(), hittar den matchning --> Skriv ut svaret för användaren.
