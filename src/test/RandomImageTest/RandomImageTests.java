@@ -13,7 +13,7 @@ class RandomImageTests {
     // Objekt som testas flera gånger så instansierar här
     RandomImageGenerator testRandomGenerator = new RandomImageGenerator();
 
-    // Mapparna som är relevanta i detta test
+    // Mapparna som är relevanta i dessa tester
     final String catsDirectoryURL = "img/randomimg/cats/";
     final String errorsDirectoryURL = "img/randomimg/errors/";
 
