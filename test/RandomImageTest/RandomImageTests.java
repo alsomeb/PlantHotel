@@ -1,4 +1,4 @@
-package test.RandomImageTest;
+package RandomImageTest;
 import frontend.FileDirectoryEnum;
 import frontend.RandomImageGenerator;
 import org.junit.jupiter.api.Test;

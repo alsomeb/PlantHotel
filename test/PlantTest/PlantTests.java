@@ -1,4 +1,4 @@
-package test.PlantTest;
+package PlantTest;
 
 import org.junit.jupiter.api.Test;
 import plants.*;
