@@ -1,9 +1,12 @@
-package plants.tests;
+package test.PlantTest;
+
 import org.junit.jupiter.api.Test;
 import plants.*;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PlantTests {
 
