@@ -12,7 +12,11 @@ import java.util.NoSuchElementException;
 
 public class FoodHotelAppen {
 
-    // Inkapslad Data, en lista med plantor som vi sedan jobbar med
+    // Inkapslad Data, och låsta klassMetoder, det ända som är öppet för MAIN är konstruktorn.
+    // Detta pga klassen sköter sig själv inombords, bara måla upp frontend!
+
+
+    // en lista med plantor som vi sedan jobbar med
     // Listan kan va final pga den KAN muteras men ej peka på en ny lista (objekt) efter den initierats
     private final List<Plant> plants; // Skapar pekare
 
@@ -32,7 +36,7 @@ public class FoodHotelAppen {
     }
 
     // Skapar upp en lista med Plants som vi kan jobba med för sökningar av användaren.
-    public void addPlants() {
+    private void addPlants() {
         plants.add(new Cactus("Igge", 0.2));
         plants.add(new Palm("Laura", 5));
         plants.add(new FlyTrap("MeatLoaf", 0.7));
