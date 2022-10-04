@@ -22,7 +22,6 @@ public abstract class Plant implements PlantFoodCalculator {
     // Polymorfism
     // Abstrakt metod som returnerar växternas Mattyp
     // samma metod för alla subklasser men olika implementeringar och svar.
-
     public abstract String getFoodTypen();
 
 
