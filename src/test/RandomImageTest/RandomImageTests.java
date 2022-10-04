@@ -36,12 +36,12 @@ class RandomImageTests {
     @Test
     void testThatAllFilesInCatsFolderAreIncludedInArray() {
         File testFile = new File(catsDirectoryURL);
-        int expected = Objects.requireNonNull(testFile.list(), "Wrong URL").length; // Om man skriver fel URL så får man ett NullPointerException med lite mer INFO vad man gjort fel
-        int expected2 = 6; // HårdKodad faktiskt värde just nu
+        int expectedCount = Objects.requireNonNull(testFile.list(), "Wrong URL").length; // Om man skriver fel URL så får man ett NullPointerException med lite mer INFO vad man gjort fel
+        int expectedCount2 = 6; // HårdKodad faktiskt värde just nu
 
         int actual = testRandomGenerator.getAllFileNamesAsArrayInFolder(FileDirectoryEnum.CATS).length;
-        assertEquals(expected, actual);
-        assertEquals(expected2, actual);
+        assertEquals(expectedCount, actual);
+        assertEquals(expectedCount2, actual);
 
         // Provar lite andra metoder för skojs skull
         // Att den inte kastar ett FEL el spec FEL
@@ -57,11 +57,11 @@ class RandomImageTests {
     @Test
     void testThatAllFilesInErrorsFolderAreIncludedInArray() {
         File testFile = new File(errorsDirectoryURL);
-        int expected = Objects.requireNonNull(testFile.list(), "Wrong URL").length;
-        int expected2 = 4;
+        int expectedCount = Objects.requireNonNull(testFile.list(), "Wrong URL").length;
+        int expectedCount2 = 4;
 
         int actual = testRandomGenerator.getAllFileNamesAsArrayInFolder(FileDirectoryEnum.ERRORS).length;
-        assertEquals(expected, actual);
-        assertEquals(expected2, actual);
+        assertEquals(expectedCount, actual);
+        assertEquals(expectedCount2, actual);
     }
 }
