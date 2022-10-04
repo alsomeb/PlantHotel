@@ -26,7 +26,7 @@ public class RandomImage {
         return rand.nextInt(max);
     }
 
-    private static String[] getAllFileNamesAsArrayInFolder(FileDirectoryEnum directoryEnum) {
+    public static String[] getAllFileNamesAsArrayInFolder(FileDirectoryEnum directoryEnum) {
         String[] pathNames;
         File randomDirectory = new File(directoryEnum.url);
 

@@ -48,7 +48,8 @@ public class FoodHotelAppen {
 
     // Ger random bild varje gång för skojs skull :)
     private void errorPrompt(String plantName) {
-        ImageIcon errorIcon = new ImageIcon(RandomImage.getRandomErrImg());
+        // Genererar en random error Icon
+        ImageIcon errorIcon = new RandomImageGenerator().generateRandomErrorImg();
 
         Object[] options = { "Okay im sorry!"};
         String message = "We dont have a plant named " + plantName;
@@ -56,10 +57,10 @@ public class FoodHotelAppen {
         JOptionPane.showOptionDialog(null, message, "Plant not found", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, errorIcon, options, defaultValueWhenPressedEnter);
     }
 
-    // Visar resultat för användaren med olika bilder på katter varje gång :)
+
     private void showResult(Plant plant) {
-        // Genererar en random icon
-        ImageIcon foodIcon = new ImageIcon(RandomImage.getRandomCatImg());
+        // Genererar en random cat icon
+        ImageIcon foodIcon = new RandomImageGenerator().generateRandomCatImg();
 
         Object[] options = { "mmm.. Tasty!"};
         String message = "This plant needs " + plant.calcNutrition() + " litres of " + plant.getFoodTypen();

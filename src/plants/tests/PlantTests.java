@@ -1,11 +1,10 @@
 package plants.tests;
 import org.junit.jupiter.api.Test;
 import plants.*;
-
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-
 import static org.junit.jupiter.api.Assertions.*;
+
 class PlantTests {
 
     // Tester för alla olika plantor vi har i vårat program, Cactus, Palm, FlyTrap
