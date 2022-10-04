@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-public class FoodHotelAppen {
+public class AlexPlantHotelApp {
 
     // Inkapslad Data, och låsta klassMetoder, det ända som är öppet för MAIN är konstruktorn.
     // Detta pga klassen sköter sig själv inombords, bara måla upp frontend!
@@ -25,7 +25,7 @@ public class FoodHotelAppen {
 
 
     // Konstruktor
-    public FoodHotelAppen() {
+    public AlexPlantHotelApp() {
         plants = new ArrayList<>(); // pekar nu i minnet där data för ett arrayList objekt förvaras
 
         // Lägger in plantorna vi skall jobba med i arrayListan
