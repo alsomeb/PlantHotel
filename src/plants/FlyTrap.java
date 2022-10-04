@@ -18,7 +18,7 @@ public class FlyTrap extends Plant {
         return food.getBaseAmount() + (food.getMultiplyAmount() * getHeightInMeter());
     }
 
-    // Polymorfism
+    // Polymorfism Abstract metod
     // Abstract metod från superklassen som skriver ut vilken typ av mat plantan skall ha
     @Override
     public String getFoodTypen() {

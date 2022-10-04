@@ -18,7 +18,7 @@ public class Cactus extends Plant {
         return food.getBaseAmount();
     }
 
-    // Polymorfism
+    // Polymorfism Abstract metod
     // Abstract metod från superklassen som skriver ut vilken typ av mat plantan skall ha
     @Override
     public String getFoodTypen() {
