@@ -1,4 +1,4 @@
-import gui.FoodHotelAppen;
+import frontend.FoodHotelAppen;
 
 public class Main {
     public static void main(String[] args) {

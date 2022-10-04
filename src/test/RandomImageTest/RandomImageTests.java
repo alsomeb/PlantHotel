@@ -1,6 +1,6 @@
 package test.RandomImageTest;
-import gui.FileDirectoryEnum;
-import gui.RandomImageGenerator;
+import frontend.FileDirectoryEnum;
+import frontend.RandomImageGenerator;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;

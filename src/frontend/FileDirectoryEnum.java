@@ -1,4 +1,4 @@
-package gui;
+package frontend;
 
 public enum FileDirectoryEnum {
     // Används så man egentligen inte kan få "magic strings" och skriver fel URL för att hämta bilderna.

@@ -1,4 +1,4 @@
-package gui;
+package frontend;
 
 import plants.Cactus;
 import plants.FlyTrap;
