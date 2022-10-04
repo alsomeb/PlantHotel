@@ -1,7 +1,7 @@
 package plants;
 
 public enum Food {
-    // Använder dessa Konstanter för mattematiska beräkningar för plantorna
+    // Använder dessa Konstanter för mattematiska beräkningar för plantorna samt Mat typens Namn
     TAPWATER("Tap Water", 0.5, 0),
     PROTEINDRINK("Protein Drink", 0.1, 0.2),
     MINERALWATER("Mineral Water", 0.02, 0);
