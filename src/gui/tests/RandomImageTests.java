@@ -12,18 +12,20 @@ import static org.junit.jupiter.api.Assertions.*;
 class RandomImageTests {
     // Objekt som testas flera gånger så instansierar här
     RandomImageGenerator testRandomGenerator = new RandomImageGenerator();
+    final String catsDirectoryURL = "img/randomimg/cats/";
+    final String errorsDirectoryURL = "img/randomimg/errors/";
 
 
     @Test
     void testFileDirEnumCATSReturnCorrectURL() {
-        String expected = "img/randomimg/cats/";
+        String expected = catsDirectoryURL;
         assert(expected.equals(FileDirectoryEnum.CATS.url));
         assert(!expected.equals(FileDirectoryEnum.ERRORS.url));
     }
 
     @Test
     void testFileDirEnumERRORSReturnCorrectURL() {
-        String expected = "img/randomimg/errors/";
+        String expected = errorsDirectoryURL;
         assertEquals(expected, FileDirectoryEnum.ERRORS.url);
         assertNotEquals(expected, FileDirectoryEnum.CATS.url);
     }
@@ -31,7 +33,7 @@ class RandomImageTests {
     // Just nu finns de 6 jpg filer i mappen "cats", jag vill testa så att alla bilder blir inkluderade i generatorn samt att den inte kastar fel osv
     @Test
     void testThatAllFilesInCatsFolderAreIncludedInArray() {
-        File testFile = new File("img/randomimg/cats/");
+        File testFile = new File(catsDirectoryURL);
         int expected = Objects.requireNonNull(testFile.list(), "Wrong URL").length; // Om man skriver fel URL så får man ett NullPointerException med lite mer INFO vad man gjort fel
         int expected2 = 6; // HårdKodad faktiskt värde just nu
 
@@ -52,7 +54,7 @@ class RandomImageTests {
 
     @Test
     void testThatAllFilesInErrorsFolderAreIncludedInArray() {
-        File testFile = new File("img/randomimg/errors");
+        File testFile = new File(errorsDirectoryURL);
         int expected = Objects.requireNonNull(testFile.list(), "Wrong URL").length;
         int expected2 = 4;
 
