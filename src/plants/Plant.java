@@ -3,7 +3,7 @@ package plants;
 public abstract class Plant implements PlantFoodCalculator {
 
     // Inkapslad data med protected, dvs åtkomst i samma paket och i subklasser
-    // Valde protected eftersom då kommer jag åt food i subklasserna och inte behöver göra en setter.
+    // Valde protected eftersom då kommer jag åt food instansvariabel i subklassernas konstruktor och inte behöver göra en setter.
     // Namn & höjd kan va final i detta program då vi inte kommer att ändra deras värde
     protected final String name;
 
