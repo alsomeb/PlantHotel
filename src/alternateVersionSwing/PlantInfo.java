@@ -1,22 +1,18 @@
-package frontend.alternateVersion;
+package alternateVersionSwing;
 
 import plants.Plant;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.List;
 
 public class PlantInfo extends JPanel {
-
-    private final List<Plant> plantsList;
     private static int plantIdIncrementerCount = 0; // För Easy fix av plantsList Index!
     private final int plantId;
     private final JLabel plantName;
     private final JButton plantDescriptionButton;
 
-    public PlantInfo(List<Plant> plantList) {
+    public PlantInfo() {
         plantId = plantIdIncrementerCount++; // Hämtar värdet sen ++ för nästa ID
-        this.plantsList = plantList;
 
         this.setPreferredSize(new Dimension(40, 20));
         this.setLayout(new BorderLayout());
@@ -39,8 +35,8 @@ public class PlantInfo extends JPanel {
 
     private void addListeners() {
         plantDescriptionButton.addActionListener(e -> {
-            Plant plant = plantsList.get(plantId);
-            message(plant.getName() + " with a height of " + plant.getHeightInMeter() + " meters"
+            Plant plant = GreenestHotelAppService.getAllPlants().get(plantId);
+            GreenestHotelAppService.messageBox(plant.getName() + " with a height of " + plant.getHeightInMeter() + " meters"
             + " drinks " + plant.calcNutrition() + " litres of " + plant.getFoodTypen() + " per day");
         });
     }
@@ -49,9 +45,4 @@ public class PlantInfo extends JPanel {
         this.plantName.setText(plantName);
     }
 
-
-    // Dynamisk message metod som kan återanvändas
-    private void message(String text) {
-        JOptionPane.showMessageDialog(null, text);
-    }
 }

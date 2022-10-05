@@ -1,4 +1,4 @@
-package frontend.alternateVersion;
+package alternateVersionSwing;
 
 import javax.swing.*;
 import java.awt.*;

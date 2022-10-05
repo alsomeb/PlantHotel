@@ -1,12 +1,9 @@
-package frontend.alternateVersion;
+package alternateVersionSwing;
 
 import plants.Plant;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.List;
 import java.util.NoSuchElementException;
 
 public class Footer extends JPanel {
@@ -15,18 +12,15 @@ public class Footer extends JPanel {
     private final JButton quickSearchPlantButton;
     private final JButton exitButton;
 
-    private final List<Plant> plantsList;
-
-    public Footer(List<Plant> plantList) {
-        this.plantsList = plantList;
-
+    public Footer() {
         this.setPreferredSize(new Dimension(1000, 180));
         this.setBackground(new Color(0xB7354E33, true));
 
 
         this.add(Box.createVerticalStrut(100)); // Margin Top på knapparna
+
         // Buttons
-        showAllPlantsButton = new JButton("Toggle Show All Plants");
+        showAllPlantsButton = new JButton("Show All Plants");
         showAllPlantsButton.setFocusable(false);
         showAllPlantsButton.setFont(new Font("Sans-serif", Font.BOLD, 20));
         this.add(showAllPlantsButton);
@@ -58,11 +52,11 @@ public class Footer extends JPanel {
         while(true) {
             String plantName = userInputDialog();
             try {
-                Plant currentPlant = getPlantByNameElseThrow(plantName);
-                JOptionPane.showMessageDialog(null, currentPlant.getName() + " drinks " + currentPlant.calcNutrition() + " liters of " + currentPlant.getFoodTypen() + " per day");
+                Plant currentPlant = GreenestHotelAppService.getPlantByNameElseThrow(plantName);
+                GreenestHotelAppService.messageBox(currentPlant.getName() + " drinks " + currentPlant.calcNutrition() + " liters of " + currentPlant.getFoodTypen() + " per day");
                 break;
             } catch (NoSuchElementException e) {
-                JOptionPane.showMessageDialog(null, plantName + " doesnt exist in our system");
+                GreenestHotelAppService.messageBox(plantName + " doesnt exist in our system");
             }
         }
     }
@@ -74,18 +68,11 @@ public class Footer extends JPanel {
             if (input == null) {
                 continue;
             } else if (input.isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Får ej vara tomt!");
+                GreenestHotelAppService.messageBox("Får ej vara tomt!");
                 continue;
             }
             return input;
         }
-    }
-
-    private Plant getPlantByNameElseThrow(String plantName) {
-        return plantsList.stream()
-                .filter(plant -> plant.getName().equalsIgnoreCase(plantName))
-                .findFirst()
-                .orElseThrow(() -> new NoSuchElementException());
     }
 
     public JButton getExitButton() {
