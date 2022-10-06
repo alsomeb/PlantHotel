@@ -50,7 +50,7 @@ public class AlexPlantHotelApp {
     }
 
 
-    // Ger random bild varje gång för skojs skull :)
+    // Ger random bild varje gång för skojs skull, egengjord klass med tester och enum :)
     private void errorPrompt(String plantName) {
         // Genererar en random error Icon
         ImageIcon errorIcon = new RandomImageGenerator().generateRandomErrorImg();

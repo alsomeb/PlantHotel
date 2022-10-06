@@ -6,6 +6,6 @@ public class Main {
         // OOP för att komma ut ur en statisk kontext, behöver ej namnge objektet pga kommer ej ref den igen!
         new AlexPlantHotelApp();
 
-        //new GreenestHotelApp(); //<-- Gjord I swing för egen studie, EJ DEN JAG VILL HA BETYG PÅ för har ej gjort tester osv till den.
+        //new GreenestHotelApp(); //<-- Denna gjorde jag för skojs skull (Allt ligger i "alternateVersionSwing"), för att prova frontenden i SWING, STRUNTA i denna, mest för det fanns tid.
     }
 }
